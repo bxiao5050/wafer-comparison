@@ -1,0 +1,89 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:70px;
+  line-height: 70px;
+  color:#000;
+  background-color: #fff;
+  border-bottom:1px solid #e7e7e7;
+  z-index: 10;
+  a{
+    color:#aaa;
+    text-decoration: none;
+  }
+  .sys-info-group {
+    float: left;
+    font-weight: bold;
+    padding: 0 10px;
+    // width:150px;
+    // background-color: #3a3f51;
+    // color:#FFF;
+    transition: all .2s ease-in-out;
+    white-space: nowrap;
+    .admin-logo {
+      display: inline-block;
+      // width:40px;
+      // height:40px;
+      vertical-align: text-top;
+    }
+    .admin-title {
+      display: inline-block;
+      // margin-left:10px;
+    }
+  }
+  .header-content{
+    margin-left:200px;
+    height:100%;
+    transition: all .2s ease-in-out;
+  .user-group {
+    float: right;
+    color:#aaa;
+    .list-item {
+      padding: 0 30px;
+      float: left;
+      border-left: 1px solid #FFF;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      position: relative;
+      i{
+        font-size: 20px;
+        vertical-align: text-top;
+      }
+      &:hover{
+        border-top: 2px solid #329fea;
+        // background-color: #EEE;
+        // border-left:1px solid #EEE;
+        // border-right:1px solid #EEE;
+        box-shadow: 0px 1px 5px 2px #EEE;
+        color:#555;
+      }
+    }
+  }
+}
+}
+
+.user-info-panel{
+  width: 100%;
+  height: 100px;
+  padding: 10px 10px 0 10px;
+  box-sizing: border-box;
+  background: url(~@/assets/images/verBg.jpg) no-repeat;
+  color:#FFF;
+  text-align: center;
+  i{
+    font-size:40px;
+    display: block;
+  }
+}
+.user-info-btn-group{
+  text-align: right;
+  .el-button{
+    color:#aaa;
+    &:hover{
+      color:#555;
+    }
+  }
+  
+}

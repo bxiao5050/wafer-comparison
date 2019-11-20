@@ -1,0 +1,21 @@
+.dropdown-menu-group{
+  position: absolute;
+  top:100%;
+  background-color:#FFF;
+  border:1px solid #bbb;
+  margin:0;
+  padding:0;
+  min-width: 100px;
+  border: 1px solid #d1dbe5;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 0 6px rgba(0,0,0,.12);
+  padding: 6px 0;
+  .dropdown-item{
+    z-index:100;
+    padding:0 20px;
+    line-height: 35px;
+    list-style: none;
+    &:hover{
+      background-color:#EEE;
+    }
+  }
+}

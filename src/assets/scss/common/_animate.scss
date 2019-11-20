@@ -1,0 +1,66 @@
+@keyframes vertical {
+  0%,
+  16%,
+  8% {
+    transform: translate(0, -3px)
+  }
+  12%,
+  20%,
+  4% {
+    transform: translate(0, 3px)
+  }
+  22% {
+    transform: translate(0, 0)
+  }
+}
+
+
+/*向左滑动进出动画*/
+.slide-to-left-enter-active {
+  position: absolute;
+  width:100%;
+  transition: all .5s ease;
+}
+.slide-to-left-leave-active {
+  position: absolute;
+  width:100%;
+  transition: all .5s ease;
+}
+.slide-to-left-enter,
+.slide-to-left-leave-to
+{
+  position: absolute;
+  width:100%;
+  transform: translateX(-100%);
+}
+/*向右滑动进出动画*/
+.slide-to-right-enter-active {
+  position: absolute;
+  width:100%;
+  transition: all .5s ease;
+}
+.slide-to-right-leave-active {
+  position: absolute;
+  width:100%;
+  transition: all .5s ease;
+}
+.slide-to-right-enter,
+.slide-to-right-leave-to
+{
+  position: absolute;
+  width:100%;
+  transform: translateX(100%);
+}
+
+/*淡入淡出动画*/
+.fade-in-enter-active {
+  transition: all .5s ease-in-out;
+}
+.fade-in-leave-active {
+  transition: all .5s ease-in-out;
+}
+.fade-in-enter,
+.fade-in-leave-to
+{
+  opacity: 0;
+}
