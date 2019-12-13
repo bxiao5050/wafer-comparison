@@ -66,8 +66,6 @@ class PieChart(Frame):
         self.ax.axis('off')
         f.subplots_adjust(left=-0.01, bottom=-0.01, right=1, top=1, wspace=0, hspace=0)
 
-        # threading.Thread(target = self.plotPiechart).start()
-
         self.drawPiechart()
 
     def drawPiechart(self):
@@ -99,19 +97,7 @@ class PieChart(Frame):
             Label(self.legengF, width = 3, text = ele, bg = 'white').grid(row = eleindex, column = 1)
 
         self.canvas.draw()
-
-    def on_legend(self, eleindex):
-        color = colorchooser.askcolor()[1] #select color
-        #change
-        self.legendB.get(eleindex).config(bg = color)
-        for pie in self.pieChars.values():
-            # if pie[eleindex].get_facecolor() != (1.0, 0.0, 0.0, 1.0): #red color
-            pie[eleindex].set_color(color)
-            pie[eleindex].set_linewidth(0.5)
-            pie[eleindex].set_edgecolor('black')
-
-        self.canvas.draw()
-
+        
     def on_click(self, event):
         click = event.xdata, event.ydata
         if None not in click: # clicking outside the plot area produces a coordinate of None, so we filter those out.
@@ -133,6 +119,18 @@ class PieChart(Frame):
                 self.inf.config(text =  'pos: {}'.format(index[0] + 1)+ '\n'+ self.data.iat[index[0], 0])
                 for eleindex in range(len(self.data.columns[3:])):
                     self.ele_v.get(eleindex).config(text = self.data.iat[index[0], eleindex + 3])
+    def on_legend(self, eleindex):
+        color = colorchooser.askcolor()[1] #select color
+        #change
+        self.legendB.get(eleindex).config(bg = color)
+        for pie in self.pieChars.values():
+            # if pie[eleindex].get_facecolor() != (1.0, 0.0, 0.0, 1.0): #red color
+            pie[eleindex].set_color(color)
+            pie[eleindex].set_linewidth(0.5)
+            pie[eleindex].set_edgecolor('black')
+
+        self.canvas.draw()
+
 
     def getPiechartIndex(self, r, c):
         x = self.data.iloc[:, 1].to_numpy()
