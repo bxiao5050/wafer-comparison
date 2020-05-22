@@ -24,12 +24,6 @@ class PieChart(Frame):
 
         if data is not None:
             self.data = data
-        """
-          Spectrum         x        y    Ru     Pd  Ag   Ir      Pt
-        Spectrum 1 {6}  -22,67  -40,969 21,5    5,9 3   50,4    19,1
-        Spectrum 1 {7}  -18,169 -40,969 19,6    5,3 2,5 52,6    20
-        Spectrum 1 {8}  -13,67  -40,969 18,5    6,5 2,5 51,9    20,5
-        """
         self.pieChars = {}#piecharts
         self.legendB = {}
         self.ax_sub = {}
@@ -68,35 +62,6 @@ class PieChart(Frame):
 
         self.drawPiechart()
 
-    def drawPiechart(self):
-        insetsize = 4.8
-        #draw piechart
-        self.deviation = 4.5/2
-        elements = [v for v in self.data.columns[3:]]
-        colorlist = cm.Set3(np.linspace(0, 1, len(elements)))
-
-        # infomaiton panel
-        self.ele_l = {} # ele name and the corresponding values
-        self.ele_v = {}
-        for eleindex, ele in enumerate(elements):
-            self.ele_l[eleindex] = Label(self.inf, width = 4, text = ele)
-            self.ele_v[eleindex] = Label(self.inf, width = 4, text = '')
-            self.ele_l.get(eleindex).grid(row = 0, column = eleindex)
-            self.ele_v.get(eleindex).grid(row = 1, column = eleindex)
-        for index, row in self.data.iterrows():
-            x = row[1]-insetsize/2
-            y = row[2]-insetsize/2
-
-            self.ax_sub[index] = self.ax.inset_axes([x, y, insetsize, insetsize], transform=self.ax.transData)
-            self.pieChars[index], t1 = self.ax_sub[index].pie([v for v in row[3:]], colors = colorlist, wedgeprops = {'linewidth' :0.5, 'edgecolor' :'black'})
-            self.ax_sub[index].axis('off')
-        #draw legend
-        for eleindex, ele in enumerate(elements):
-            self.legendB[eleindex] = Button(self.legengF, width = 3, bg = colors.rgb2hex(colorlist[eleindex]), relief = 'flat', command = lambda eleindex = eleindex: self.on_legend(eleindex))
-            self.legendB.get(eleindex).grid(row = eleindex, column = 0)
-            Label(self.legengF, width = 3, text = ele, bg = 'white').grid(row = eleindex, column = 1)
-
-        self.canvas.draw()
         
     def on_click(self, event):
         click = event.xdata, event.ydata
@@ -130,7 +95,36 @@ class PieChart(Frame):
             pie[eleindex].set_edgecolor('black')
 
         self.canvas.draw()
+        
+    def drawPiechart(self):
+        insetsize = 4.8
+        #draw piechart
+        self.deviation = 4.5/2
+        elements = [v for v in self.data.columns[3:]]
+        colorlist = cm.Set3(np.linspace(0, 1, len(elements)))
 
+        # infomaiton panel
+        self.ele_l = {} # ele name and the corresponding values
+        self.ele_v = {}
+        for eleindex, ele in enumerate(elements):
+            self.ele_l[eleindex] = Label(self.inf, width = 4, text = ele)
+            self.ele_v[eleindex] = Label(self.inf, width = 4, text = '')
+            self.ele_l.get(eleindex).grid(row = 0, column = eleindex)
+            self.ele_v.get(eleindex).grid(row = 1, column = eleindex)
+        for index, row in self.data.iterrows():
+            x = row[1]-insetsize/2
+            y = row[2]-insetsize/2
+
+            self.ax_sub[index] = self.ax.inset_axes([x, y, insetsize, insetsize], transform=self.ax.transData)
+            self.pieChars[index], t1 = self.ax_sub[index].pie([v for v in row[3:]], colors = colorlist, wedgeprops = {'linewidth' :0.5, 'edgecolor' :'black'})
+            self.ax_sub[index].axis('off')
+        #draw legend
+        for eleindex, ele in enumerate(elements):
+            self.legendB[eleindex] = Button(self.legengF, width = 3, bg = colors.rgb2hex(colorlist[eleindex]), relief = 'flat', command = lambda eleindex = eleindex: self.on_legend(eleindex))
+            self.legendB.get(eleindex).grid(row = eleindex, column = 0)
+            Label(self.legengF, width = 3, text = ele, bg = 'white').grid(row = eleindex, column = 1)
+
+        self.canvas.draw()
 
     def getPiechartIndex(self, r, c):
         x = self.data.iloc[:, 1].to_numpy()
