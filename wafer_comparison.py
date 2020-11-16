@@ -56,8 +56,13 @@ class TwoWafers(Frame):
         self.resultInf = scrolledtext.ScrolledText(comparePanel, wrap = 'word', width = 40)
         self.resultInf.grid(row = 1, column = 0, columnspan = 2, padx = (5,5))
 
-    def on_overview(self):
-        self.highlight_the_wafers()
+
+    def on_click_results(self, event):
+        click = event.xdata, event.ydata
+        if None not in click: # clicking outside the plot area produces a coordinate of None, so we filter those out.
+            mainindex = self.mainPiechart.getPiechartIndex(click[0], click[1])
+            if len(mainindex)>0:
+                self.referencePiechart.plotHighlight([v for v in self.matchindex[mainindex[0]]])
 
     def on_compare(self):
         # self.on_import1()
@@ -101,12 +106,6 @@ class TwoWafers(Frame):
         self.referencePiechart.plotHighlight(refindex_unique, color = 'blue')
 
 
-    def on_click_results(self, event):
-        click = event.xdata, event.ydata
-        if None not in click: # clicking outside the plot area produces a coordinate of None, so we filter those out.
-            mainindex = self.mainPiechart.getPiechartIndex(click[0], click[1])
-            if len(mainindex)>0:
-                self.referencePiechart.plotHighlight([v for v in self.matchindex[mainindex[0]]])
 
 
 
