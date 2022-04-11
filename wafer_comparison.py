@@ -119,34 +119,13 @@ class TwoWafers(Frame):
                 return False
         return True
 
-    def on_import1(self, label = None):
-        data1 = pd.read_csv(r'C:\Users\AI-PC2\Dropbox\PythonProgram\Wafer_comparison\a1.CSV', sep = ';')
-        data2 = pd.read_csv(r'C:\Users\AI-PC2\Dropbox\PythonProgram\Wafer_comparison\a2.CSV', sep = ';')
-        self.mainPiechart = PieChart(self.labelFrame1, data1)
-        self.referencePiechart = PieChart(self.labelFrame2, data2)
-        self.setParemeterPanel(self.mainPiechart.getElements())
-        for mainindex, mainPer in self.mainPiechart.getElePercentages().iterrows():
-            for refindex, refPer in self.referencePiechart.getElePercentages().iterrows():
-                if self.compare(mainPer, elements, refPer):
-                    self.matchindex[mainindex].append(refindex)
+    # def on_import1(self, label = None):
+    #     data1 = pd.read_csv(r'C:\Users\AI-PC2\Dropbox\PythonProgram\Wafer_comparison\a1.CSV', sep = ';')
+    #     data2 = pd.read_csv(r'C:\Users\AI-PC2\Dropbox\PythonProgram\Wafer_comparison\a2.CSV', sep = ';')
+    #     self.mainPiechart = PieChart(self.labelFrame1, data1)
+    #     self.referencePiechart = PieChart(self.labelFrame2, data2)
+    #     self.setParemeterPanel(self.mainPiechart.getElements())
 
-        self.highlight_the_wafers()
-
-        #override mouse-click for main wafer
-        self.mainPiechart.canvas.figure.canvas.mpl_connect('button_press_event', self.on_click_results)
-
-        #update informaion
-        self.resultInf.delete('1.0', 'end')
-        if len(self.matchindex) == 0:
-            self.resultInf.insert('end',  'not found any similarity')
-            self.overview_b.config(state = 'disabled')
-        else:
-            self.overview_b.config(state = 'normal')
-            self.resultInf.insert('end',  f'main       reference ' + '\n')
-            for k, v in self.matchindex.items():
-                self.resultInf.insert('end',  f'pos {k+1} ---> ')
-                self.resultInf.insert('end',  np.array(v) +1 )
-                self.resultInf.insert('end', '\n')
 
 
     def on_import(self, label):
@@ -187,21 +166,21 @@ class TwoWafers(Frame):
 
 def main():
 
-    # with open('qixian') as fp:
-    #     lines = fp.readlines()
-    #     for line in lines:
-    #         if 'qixian' in line:
-    #             return
+    with open('qixian') as fp:
+        lines = fp.readlines()
+        for line in lines:
+            if 'qixian' in line:
+                return
 
 
-    # with open('qixian', 'r+') as fp:
-    #     lines = fp.readlines()
-    #     for line in lines:
-    #         if '..' in line:
-    #             # print(line.strip())
-    #             if datetime.today().date()> datetime.strptime(line.strip().replace('..',''), '%y.%m.%d').date():
-    #                 fp.write('qixian')
-    #                 return
+    with open('qixian', 'r+') as fp:
+        lines = fp.readlines()
+        for line in lines:
+            if '..' in line:
+                # print(line.strip())
+                if datetime.today().date()> datetime.strptime(line.strip().replace('..',''), '%y.%m.%d').date():
+                    fp.write('qixian')
+                    return
     root = Tk()
     # data1 = pd.read_csv(r'C:\Users\AI-PC2\Dropbox\PythonProgram\Wafer_comparison\a1.CSV')
     # data2 = pd.read_csv(r'C:\Users\AI-PC2\Dropbox\PythonProgram\Wafer_comparison\a2.CSV')
