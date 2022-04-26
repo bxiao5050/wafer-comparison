@@ -3,7 +3,7 @@
 compare and view how similar two libraries are
 <p align="center">
     <a href="https://ruhr-uni-bochum.sciebo.de/s/7YEQX7jGULOTEeg" target="_blank">
-        <img align="center" width = "200" alt="download" src="/assets/download_logo1.gif"/>
+        <img align="center" width = "200" alt="download" src="/assets/download_logo1.png"/>
     </a>
 </p>
 
@@ -13,7 +13,7 @@ compare and view how similar two libraries are
 ### Screenshots
 
 <div align = "center">
-  <img align = "center" width = "700" src = "/assets/image1.png"/>
+  <img align = "center" width = "700" src = "/assets/image1.gif"/>
     <p align = "center">Main windows of the programs</p><br>
 <!--   <img align = "center" width = "600" src = "/assets/image2.png"/>
     <p align = "center">Workflow to setup the automated phase identification program</p><br>
