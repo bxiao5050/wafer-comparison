@@ -3,7 +3,7 @@
 compare and view how similar two libraries are
 <p align="center">
     <a href="https://ruhr-uni-bochum.sciebo.de/s/7YEQX7jGULOTEeg" target="_blank">
-        <img align="center" width = "200" alt="download" src="/assets/download_logo1.png"/>
+        <img align="center" width = "200" alt="download" src="/assets/download_logo1.gif"/>
     </a>
 </p>
 
